@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title th:text="${title}"></title>
+  <link href="/static/img/favicon.ico" rel="icon">
+  <link href="/css/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="/css/reg.css" rel="stylesheet">
+  <script src="/js/lib/jquery-3.6.3.js"></script>
+</head>
+
+<body class="text-center">
+
+    <form th:method="POST" th:action="@{/reg}" th:object="${user}" class="form-reg" >
+      <img class="mb-4" src="/static/img/taw.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+      <input type="text"
+             th:field="*{username}"
+             placeholder="Имя"
+             class="form-control"
+             autofocus="true"
+             required/>
+
+      <div th:if="${isShowErrorMessageByUsername}" class="alert alert-danger" role="alert">
+        <strong th:text="${usernameError}"></strong>
+      </div>
+      <br>
+      <input type="password"
+             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+             title="Не менее восьми символов, содержащих хотя бы одну цифру и символы из верхнего и нижнего регистра"
+             th:field="*{password}"
+             placeholder="Пароль"
+             class="form-control"
+             required/>
+      <br>
+      <input type="password"
+             th:field="*{passwordConfirm}"
+             placeholder="Подтвердить пароль"
+             class="form-control"
+             required/>
+      <br>
+      <div th:if="${isShowErrorMessageByPassword}" class="alert alert-danger" role="alert">
+        <strong th:text="${passwordError}"></strong>
+      </div>
+      <button type="submit" class="btn btn-lg btn-info btn-block">Отправить запрос</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+    </form>
+
+</body>
+
+</html>

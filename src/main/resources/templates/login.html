@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title th:text="${title}"></title>
+  <link href="/static/img/favicon.ico" rel="icon" >
+  <link href="/css/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="/css/reg.css" rel="stylesheet">
+  <script src="/js/lib/jquery-3.6.3.js"></script>
+</head>
+
+<body class="text-center">
+
+<form th:method="POST" th:action="@{/login}" class="form-reg" >
+  <img class="mb-4" src="/static/img/taw.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Вход</h1>
+  <input type="text"
+         name="username"
+         placeholder="Имя"
+         class="form-control form-control-lg"
+         autofocus="true"
+         required />
+  <br>
+  <input type="password"
+         name="password"
+         placeholder="Пароль"
+         class="form-control form-control-lg"
+         required />
+  <br>
+  <button class="btn btn-info btn-lg btn-block"
+          type="submit">Вход</button>
+  <p>У вас нет аккаунта? <a th:href="@{/reg}" class="link-info">Регистрация</a></p>
+</form>
+
+</body>
+</html>

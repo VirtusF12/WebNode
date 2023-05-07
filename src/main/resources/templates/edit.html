@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="icon" href="/static/img/favicon.ico">
+  <title th:text="${title}"></title>
+  <link rel="stylesheet" href="/css/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css">
+  <style>
+    .edit-user__img {
+      width: 200px;
+      /* text-align: center; */
+      height: 200px;
+      margin: auto;
+      /* padding-bottom: 50px; */
+      /* padding-top: 50px; */
+      border-radius: 50%;
+    }
+    .marg {
+      margin: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row marg">
+      <img class="edit-user__img" th:src="@{{path}(path=${user.getPathImg()})}" alt="">
+    </div>
+
+    <div class="row">
+
+      <form th:method="POST" th:action="@{/auth/user/edit}" th:object="${user}" enctype="multipart/form-data">
+          <!--    <lable th:for="username">Логин: </lable>-->
+          <!--    <input type="text"-->
+          <!--           placeholder="введите логин"-->
+          <!--           class="form-control"-->
+          <!--           th:field="*{username}"-->
+          <!--    />-->
+          <!--    <br>-->
+          <lable th:for="fullName">ФИО: </lable>
+          <input type="text"
+                   placeholder="введите ваше фио"
+                   class="form-control"
+                   th:field="*{fullName}"
+          />
+          <br>
+          <lable th:for="phone">Мобильный телефон:</lable>
+          <input type="text"
+                   pattern="(\+?\d[- .]*){7,13}"
+                   title="Международный, государственный или местный телефонный номер"
+                   placeholder="введите ваш мобильный телефон"
+                   class="form-control"
+                   th:field="*{phone}"
+          />
+          <br>
+          <lable th:for="description">Описание: </lable>
+          <textarea cols="10"
+                      rows="10"
+                      type="text"
+                      placeholder="введите описание"
+                      class="form-control"
+                      th:field="*{description}"
+          />
+          <br>
+          <lable th:for="dob">Дата Рождения: </lable>
+          <input type="date"
+                   placeholder="введите дату рождения"
+                   class="form-control"
+                   th:field="*{dob}"
+          />
+          <br>
+          <lable th:for="email">E-mail: </lable>
+          <input type="email"
+                   pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
+                   placeholder="введите e-mail"
+                   class="form-control"
+                   th:field="*{email}"
+          />
+          <br>
+          <lable th:for="file">File img: </lable>
+          <input type="file"
+                   name="file"
+                   class="form-control"
+          />
+          <br>
+          <button type="submit" class="btn btn-success col-2">Обновить</button>
+      </form>
+
+      <br>
+    </div>
+      <!--  <a th:href="@{/img/(${resultFile})}">upload file</a>-->
+      <!--  <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}" />-->
+      <!--<footer th:insert="blocks/footer :: footer"></footer>-->
+    <a th:href="@{/auth}">Перейти к списку контактов</a>
+  </div>
+
+</body>
+
+    <script src="/js/lib/jquery-3.6.3.js"></script>
+
+</html>

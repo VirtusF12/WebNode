@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="icon" href="/static/img/favicon.ico">
+  <title th:text="${title}"></title>
+  <link rel="stylesheet" href="/css/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css">
+  <!--<script src="/css/lib/bootstrap-5.0.2/dist/js/bootstrap.min.js"></script>-->
+  <script src="/js/lib/jquery-3.6.3.js"></script>
+</head>
+
+<body>
+
+<div th:insert="blocks/header :: header"></div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div th:insert="blocks/nav :: nav"></div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2" th:text="'CRUD WebNode - '+${title}">CRUD WebNode</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-text-bottom" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            This week
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div th:switch="${users.size()>0}">
+          <div th:case="true">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="table-info">
+                  <th scope="col">Id</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">Dob</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="user : ${users}">
+                  <td th:text="${user.getId()}"></td>
+                  <td th:text="${user.getUsername()}"></td>
+                  <td th:text="${user.getPassword()}"></td>
+                  <td th:text="${user.getDob()}"></td>
+                  <td>
+                    <a th:href="@{/{id}/edit(id=${user.getId()})}">Редактировать</a> /
+                    <a th:href="@{/{id}/delete(id=${user.getId()})}">Удалить</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div th:case="false">
+            <p>
+              В базе данных пока еще нет пользователей.
+            </p><br>
+            <a th:href="@{/add}">Создать пользователя</a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+
+</body>
+
+<script src="/js/main.js"></script>
+
+</html>

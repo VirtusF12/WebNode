@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}" />
+  <link rel="icon" href="/static/img/favicon.ico">
+
+  <link rel="stylesheet"
+        href="/css/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css" >
+  <link rel="stylesheet"
+        href="/css/contact.css">
+
+</head>
+<body>
+
+  <div id="wrapper">
+    <div id="mask">
+      <div id="page-user-list" class="page-contact">
+        <div class="content">
+          <div class="container-slider">
+            <div class="row mt-3 mb-3">
+              <div class="col-2">
+                <div class="contact-div__menu">
+                  <img src="/static/img/contact/contact-menu.svg" alt="menu">
+                </div>
+              </div>
+              <div class="col-10">
+                <div class="input-group">
+                                  <span class="input-group-text contact-span__icon--search">
+                                      <img src="/static/img/contact/contact-search.svg" alt="search">
+                                  </span>
+                  <input
+                          id="contact-search"
+                          name="search"
+                          type="text"
+                          class="form-control contact-input__search"
+                          placeholder="Search"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div id="contacts">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div id="page-user-message" class="page-message">
+        <div class="content-contact">
+
+          <div id="message-header">
+
+            <div class="message-nav__back">
+              <a id="message-btn-back" href="#page-user-list" class="panel-back">
+                <img src="/static/img/contact/contact-message-back.svg" alt="message-back">
+              </a>
+            </div>
+
+            <!-- nav contact -->
+            <div class="message-nav__content">
+              <img class="message-img__photo" src="https://static.perfluence.net/redactor/164969/50310ff09b-2.png" alt="message-user-photo">
+              <div class="message-nav__user">
+                <span id="message-user-fullname">Михаил Валерьевич</span>
+                <span id="message-user-status">offline</span>
+              </div>
+            </div>
+
+            <div class="message-nav__menu">
+              <a id="contact-info" href="">
+                <img src="/static/img/contact/contact-message-menu.svg" alt="message-menu">
+              </a>
+            </div>
+
+          </div>
+
+          <!-- message -->
+          <div id="message-container">
+
+            <div class="row-message">
+              <div class="row-content">
+                <div class="contact-message__left">
+                  <span class="message-span">TEST left</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row-message">
+              <div class="row-content">
+                <div class="contact-message__rigth">
+                  <span class="message-span">TEST right</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="message-footer__end"></div>
+
+          <!-- footer contact -->
+          <div id="contact-footer">
+            <div class="contact-menu-row">
+              <div class="contact-item__img">
+                <a href="/auth/user/edit">
+                  <img src="/static/img/contact/contact-edit.svg" alt="attachments">
+                </a>
+              </div>
+              <div class="contact-item__img">
+                <a href="/logout">
+                  <img src="/static/img/contact/contact-message-back.svg" alt="message-back">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer message -->
+          <div id="message-footer">
+
+            <div class="input-group">
+                <input id="msg"
+                      name="message-text"
+                      type="text"
+                      placeholder="Сообщение"
+              />
+              <span class="input-group-text message-attachment">
+                <img src="/static/img/contact/contact-message-attachments.svg"
+                     alt="attachments">
+              </span>
+            </div>
+
+            <div class="btn" >
+                <img id="btn-send-msg"
+                     src="/static/img/contact/contact-message-btn-send.svg"
+                     alt="send-message">
+            </div>
+
+          </div>
+          <!-- end footer -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/babel.min.js"></script>
+  <script src="/js/axios.min.js"></script>
+  <script src="/js/sockjs.min.js"></script>
+  <script src="/js/stomp.min.js"></script>
+  <script src="/js/lib/jquery-3.6.3.js"></script>
+  <script src="/js/contact.js"></script>
+  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+  <script type="text/javascript" src="/js/slider.js"></script>
+
+</body>
+</html>
