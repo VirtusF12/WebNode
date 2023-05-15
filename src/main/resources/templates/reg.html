@@ -5,11 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="yandex-verification" content="0b71d6761acff126" />
+  <meta name="google-site-verification" content="4NB3OuzyZHo0pUq3qOjc2EF5Akbt0HVzjvU45f512Ys" />
+
   <title th:text="${title}"></title>
   <link href="/static/img/favicon.ico" rel="icon">
   <link href="/css/lib/bootstrap-5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
   <link href="/css/reg.css" rel="stylesheet">
   <script src="/js/lib/jquery-3.6.3.js"></script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(93569855, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/93569855" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
 </head>
 
 <body class="text-center">
@@ -18,11 +39,13 @@
       <img class="mb-4" src="/static/img/taw.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
       <input type="text"
+             pattern="^[a-zA-Z]+$"
+             title="Любое слово на латинице."
              th:field="*{username}"
-             placeholder="Имя"
+             placeholder="Имя пользователя"
              class="form-control"
              autofocus="true"
-             required/>
+             required />
 
       <div th:if="${isShowErrorMessageByUsername}" class="alert alert-danger" role="alert">
         <strong th:text="${usernameError}"></strong>
@@ -30,22 +53,23 @@
       <br>
       <input type="password"
              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-             title="Не менее восьми символов, содержащих хотя бы одну цифру и символы из верхнего и нижнего регистра"
+             title="Не менее восьми символов, содержащих хотя бы одну цифру и символы из верхнего и нижнего регистра."
              th:field="*{password}"
              placeholder="Пароль"
              class="form-control"
-             required/>
+             required />
       <br>
       <input type="password"
              th:field="*{passwordConfirm}"
-             placeholder="Подтвердить пароль"
+             placeholder="Подтвердить пароль."
              class="form-control"
-             required/>
+             required />
       <br>
       <div th:if="${isShowErrorMessageByPassword}" class="alert alert-danger" role="alert">
         <strong th:text="${passwordError}"></strong>
       </div>
       <button type="submit" class="btn btn-lg btn-info btn-block">Отправить запрос</button>
+      <p style="margin-top: 20px;"><a th:href="@{/}" class="link-info">Назад</a></p>
       <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
     </form>
 

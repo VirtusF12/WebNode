@@ -1,6 +1,8 @@
 
+
+const url = "http://friend18.ru"
 //const url = "http://176.113.82.195:80"; // prod
-const url = "http://localhost:8080"; // dev, test
+//const url = "http://localhost:8080"; // dev, test
 
 let stompClient;
 let selectedUserOrGroup = "";
